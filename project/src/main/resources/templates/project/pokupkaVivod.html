@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<hr class="hr1">
+<hr class="hr2">
+<hr class="hr3">
+<hr class="hr4">
+<hr class="hr5">
+<hr class="hr6">
+<hr class="hr7">
+<hr class="hr8">
+<hr class="hr9">
+<hr class="hr10">
+
+<div class="opisan1" th:each="computer, num : ${computers}">
+    <img th:id="'img' + ${num.count}" class="card-img-top" th:attr="data-imgurl=${computer.img}" width="440" height="350">
+    <table>
+        <tr>
+            <td><p>Brand</p></td>
+            <td class="nadp1"><p th:text="${computer.marka}"></p></td>
+        </tr>
+        <tr>
+            <td><p>Model</p></td>
+            <td class="nadp1"><p th:text="${computer.model}"></p></td>
+        </tr>
+        <tr>
+            <td><p>Price</p></td>
+            <td class="nadp1"><p th:text="${computer.price}"></p></td>
+        </tr>
+        <tr>
+            <td><p>RAM</p></td>
+            <td class="nadp1"><p th:text="${computer.operativpamat}"></p></td>
+        </tr>
+        <tr>
+            <td><p>CPU</p></td>
+            <td class="nadp1"><p th:text="${computer.processor}"></p></td>
+        </tr>
+        <tr>
+            <td><p>ROM</p></td>
+            <td class="nadp1"><p th:text="${computer.pamat}"></p></td>
+        </tr>
+        <tr>
+            <td><p>Disk type</p></td>
+            <td class="nadp1"><p th:text="${computer.tippamat}"></p></td>
+        </tr>
+        <tr>
+            <td><p>Seller</p></td>
+            <td class="nadp1"><p th:text="${computer.user.nameSurname}"></p></td>
+        </tr>
+        <tr>
+            <td><p>Email</p></td>
+            <td class="nadp1"><p th:text="${computer.user.email}"></p></td>
+        </tr>
+        <tr>
+            <td><p>Phone</p></td>
+            <td class="nadp1"><p th:text="${computer.user.number}"></p></td>
+        </tr>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+            for (let i = 1; i <= $(`.card-img-top`).length; i++) {
+                var pictureName = $(`#img${i}`).data("imgurl");
+                getImage(pictureName, i);
+            }
+        });
+
+        function toDataURL(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    callback(reader.result);
+                }
+                reader.readAsDataURL(xhr.response);
+            };
+            xhr.open('GET', url);
+            xhr.responseType = 'blob';
+            xhr.send();
+        }
+
+        function getImage(pictureName, id) {
+            toDataURL('/rest_img/static/image/' + pictureName, function (dataUrl) {
+                console.log('RESULT:', dataUrl)
+                document.getElementById("img" + id).src = dataUrl;
+            })
+        }
+
+</script>
+
+<style>
+    body {
+	background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+}
+
+.opisan1{
+    position: absolute;
+    top: 0%;
+    left: 34%;
+}
+
+.nadp1{
+    position: absolute;
+    left: 95%;
+}
+
+hr{
+    border: none;
+    background-color: black;
+    color: red;
+    height: 2px;
+    width: 70%;
+}
+.hr1{
+    position: absolute;
+    top:52.5%;
+    left: 15%;
+}
+.hr2{
+    position: absolute;
+    top:60%;
+    left: 15%;
+}
+.hr3{
+    position: absolute;
+    top:68%;
+    left: 15%;
+}
+.hr4{
+    position: absolute;
+    top:74.9%;
+    left: 15%;
+}
+.hr5{
+    position: absolute;
+    top:82.7%;
+    left: 15%;
+}
+.hr6{
+    position: absolute;
+    top:89%;
+    left: 15%;
+}
+.hr7{
+    position: absolute;
+    top:97%;
+    left: 15%;
+}
+.hr8{
+    position: absolute;
+    top:105%;
+    left: 15%;
+}
+.hr9{
+    position: absolute;
+    top:111.5%;
+    left: 15%;
+}
+.hr10{
+    position: absolute;
+    top:117.7%;
+    left: 15%;
+}
+
+
+
+
+</style>
+
+</body>
+</html>

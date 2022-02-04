@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a onclick="window.open('/projectOne','mywindow');"><button class="button2">Главная страница</button></a>
+<h1 class="voydite">Войдите в свой аккаунт</h1>
+
+<form class="form-signin" method="post" action="/login">
+        <input type="text" id="username" name="username" class="form-control login2" placeholder="Логин" required autofocus>
+
+        <input type="password" id="password" name="password" class="form-control password2" placeholder="Пароль" required>
+
+    <input name="_csrf" type="hidden" value="25eea7ab-ee14-41be-8412-c02cbad7dd89" />
+    <button class="btn btn-lg btn-primary btn-block button3 " type="submit">Войти</button>
+</form>
+
+
+    <!--<form th:method="POST" th:action="@{/login}">
+        <input class="login2" id="login" name="username" type="text" placeholder="Логин">
+        <input class="password2" id="password" name="password" type="password" placeholder="Пароль">
+        <input class="button3" type="submit" value="Войти">
+    </form>-->
+
+
+
+<style>
+
+body{
+  background: crimson;
+  box-shadow: 0 -150px 70px -120px teal inset,
+              0 -220px 70px -120px yellowgreen inset,
+              0 -280px 70px -120px gold inset;
+  animation: background 2s infinite alternate;
+}
+
+@keyframes background {
+  50% {
+    background: darkviolet;
+    box-shadow: 0 -140px 70px -120px mediumorchid inset,
+                0 -210px 70px -120px teal inset,
+                0 -280px 70px -120px plum inset;
+  }
+}
+
+    .button2 {
+  text-decoration: none;
+  display: inline-block;
+  width: 300px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+  text-align: center;
+  position: absolute;
+  left: 39%;
+  top: 12%;
+}
+.button2:hover {
+  background: rgb(0, 189, 132);
+  box-shadow: 0 15px 20px rgb(13,17,55, 0.637);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.voydite{
+    position: absolute;
+    top: 21%;
+    left: 36%;
+    font-size: 40px;
+}
+
+.login2{
+  position: absolute;
+  top: 36%;
+  left: 40%;
+}
+
+.password2{
+  position: absolute;
+  top: 44%;
+  left: 40%;
+}
+
+input[type=text],[type=password] {
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 17px;
+    border-color: teal;
+
+}
+.button3 {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  border-radius: 14px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+  position: absolute;
+  top: 52%;
+  left: 38%;
+  width: 330px;
+  height: 50px;
+}
+.button3:hover {
+  background-position: right center;
+
+
+
+</style>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:padding="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="rectangle"></div>
+<button onclick="window.open('/projectOne','mywindow');" class="button2">Главная страница</button>
+<a th:href="@{/projectOne/addNout}"><input type="submit" class="addNout" value="Добавить компьютер"></a>
+
+<table class="tableKomp" border="3">
+    <tbody>
+    <tr>
+        <th>Код</th>
+        <th>Марка</th>
+        <th>Модель</th>
+        <th>Картинка</th>
+        <th>Цена</th>
+        <th>Операции</th>
+    </tr>
+    <tr th:each="computer, num : ${computers}">
+        <form th:action="@{projectOne/noutTable}" th:method="GET">
+            <td th:text="${computer.id}"></td>
+            <td th:text="${computer.marka}"></td>
+            <td th:text="${computer.model}"></td>
+            <td><img th:id="'img' + ${num.count}" class="computer_img" th:attr="data-imgurl=${computer.img}" width="90" height="65"></td>
+            <td th:text="${computer.price}"></td>
+            <form>
+                <td>
+                    <button><a th:href="@{/projectOne/deleteNout/{id} (id = ${computer.id})}">Удалить</a></button>
+                </td>
+            </form>
+        </form>
+    </tr>
+
+    </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+            for (let i = 1; i <= $(`.computer_img`).length; i++) {
+                var pictureName = $(`#img${i}`).data("imgurl");
+                getImage(pictureName, i);
+            }
+        });
+
+        function toDataURL(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    callback(reader.result);
+                }
+                reader.readAsDataURL(xhr.response);
+            };
+            xhr.open('GET', url);
+            xhr.responseType = 'blob';
+            xhr.send();
+        }
+
+        function getImage(pictureName, id) {
+            toDataURL('/rest_img/static/image/' + pictureName, function (dataUrl) {
+                console.log('RESULT:', dataUrl)
+                document.getElementById("img" + id).src = dataUrl;
+            })
+        }
+
+</script>
+
+
+<style>
+         body{
+      background-color: #a25de2;
+    }
+    .rectangle{
+    width:1220px;
+    height: 600px;
+    background:#f76945;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    border-radius: 30px;
+    }
+
+    .tableKomp{
+      position: absolute;
+      top: 30%;
+      left: 15%;
+      width: 70%;
+    }
+
+    .button2 {
+  text-decoration: none;
+  display: inline-block;
+  width: 300px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+  text-align: center;
+  position: absolute;
+  left: 10%;
+  top: 12%;
+}
+.button2:hover {
+  background: rgb(238,198,15);
+  box-shadow: 0 15px 20px rgb(13,17,55, 0.637);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.addNout {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  border-radius: 14px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+  position: absolute;
+  top: 12%;
+  left: 40%;
+  width: 330px;
+  height: 50px;
+}
+.addNout:hover {
+  background-position: right center;
+}
+
+a{
+    text-decoration: none;
+   }
+</style>
+</body>
+</html>

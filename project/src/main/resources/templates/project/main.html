@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div sec:authorize="!isAuthenticated()">
+    <div class="colorBody1"></div>
+    <div class="rectangle"></div>
+    <div class="rectangle2"></div>
+</div>
+
+<div sec:authorize="isAuthenticated()">
+    <div class="colorBody2"></div>
+    <div class="rectangle3"></div>
+    <div class="rectangle4"></div>
+</div>
+
+<h1 class="name1">Добро пожаловать в компьютерный магазин Скаллето</h1>
+
+
+
+
+
+<input type="button" value="Главная страница" class="floating-button1" >
+
+<a sec:authorize="!isAuthenticated()"  th:href="@{/projectOne/pokupka}"><input  type="button" value="Покупка и продажа компьютеров"  class="floating-button2"></a>
+
+
+<a sec:authorize="!isAuthenticated()"  th:href="@{/projectOne/user}"><input type="button" value="Вход" class="floating-button3" ></a>
+
+
+<a sec:authorize="!isAuthenticated()"  th:href="@{/projectOne/newUser}"><input type="button" value="Новый пользователь" class="floating-button4"></a>
+
+
+
+
+<a sec:authorize="isAuthenticated()"  th:href="@{/projectOne/noutTable}"><input  type="button" value="Компьютеры"  class="floating-button2"></a>
+
+
+<a sec:authorize="isAuthenticated()"  th:href="@{/projectOne/pokupka}"><input type="button" value="Покупка и продажа компьютеров" class="floating-button3" ></a>
+
+
+<a sec:authorize="isAuthenticated()"><input type="button" onclick="window.open('/logout', '_self')" value="Выход" class="floating-button4"></a>
+
+
+
+
+
+
+
+
+
+
+<style>
+
+  .colorBody1{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color:   rgb(255, 61, 61);
+    }
+
+  .colorBody2{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #1d3b45;
+    }
+
+    .rectangle{
+    width:1220px;
+    height: 600px;
+    background:rgb(253, 151, 55);
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    border-radius: 30px;
+    }
+
+    .rectangle2{
+    width: 1000px;
+    height: 12px;
+    background:rgb(255, 61, 61);
+    position: absolute;
+    left: 16.5%;
+    top: 25%;
+    border-radius: 3px;
+    }
+
+      .rectangle3{
+    width:1220px;
+    height: 600px;
+    background:#d2601a;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    border-radius: 30px;
+    }
+
+    .rectangle4{
+    width: 1000px;
+    height: 12px;
+    background:#f8a612;
+    position: absolute;
+    left: 16.5%;
+    top: 25%;
+    border-radius: 3px;
+    }
+
+    .name1{
+      position: absolute;
+      left: 21.5%;
+      top: 15.5%;
+      color: black;
+      font-size: 34px;
+    }
+
+
+
+.floating-button1 {
+  text-decoration: none;
+  display: inline-block;
+  width: 400px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+  position: absolute;
+  left: 16%;
+  top: 40%;
+}
+.floating-button1:hover {
+  background: rgb(238,198,15);
+  box-shadow: 0 15px 20px rgb(13,17,55, 0.637);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.floating-button2 {
+  text-decoration: none;
+  display: inline-block;
+  width: 400px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+  position: absolute;
+  left: 54%;
+  top: 40%;
+}
+.floating-button2:hover {
+  background: rgb(238,198,15);
+  box-shadow: 0 15px 20px rgb(13,17,55, 0.637);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.floating-button3 {
+  text-decoration: none;
+  display: inline-block;
+  width: 400px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+  position: absolute;
+  left: 16%;
+  top: 70%;
+}
+.floating-button3:hover {
+  background: rgb(238,198,15);
+  box-shadow: 0 15px 20px rgba(13, 17, 55, 0.637);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.floating-button4 {
+  text-decoration: none;
+  display: inline-block;
+  width: 400px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+  position: absolute;
+  left: 54%;
+  top: 70%;
+}
+.floating-button4:hover {
+  background: rgb(238,198,15);
+  box-shadow: 0 15px 20px rgba(13, 17, 55, 0.637);
+  color: white;
+  transform: translateY(-7px);
+}
+
+</style>
+</body>
+</html>
